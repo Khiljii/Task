@@ -2,6 +2,15 @@ package com.example.task.com.example.task;
 
 import java.util.Scanner;
 
+class Invalidrowcolumn  extends Exception
+{
+
+    public Invalidrowcolumn (String message)
+    {
+        super(message);
+    }
+}
+
 public class Matrix {
     public  int row;
     public  int col;
@@ -77,6 +86,24 @@ public class Matrix {
         }
         return null;
 
+    }
+    public void addMan() throws Invalidrowcolumn{
+        this.setArray();
+            System.out.println("We have a Matrix of row "+row+" and Column "+col);
+            System.out.print("Enter row ");
+            int a=sn.nextInt();
+            System.out.println("");
+            System.out.print("Enter Column ");
+            int b= sn.nextInt();
+            System.out.println("");
+            if(a>this.row || b>this.col){
+                throw new Invalidrowcolumn("Enter wrong row or column");
+            }else {
+                System.out.print("Enter Value ");
+                elm[a][b]= sn.nextInt();
+                System.out.println(" ");
+                System.out.println("Value Entered ");
+            }
     }
     public void show(){
         for (int i=0;i<this.row;i++)
